@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+<!-- 
+	<bean id="MyXMLApp" class="com.journaldev.spring.di.consumer.MyXMLApplication">
+		<constructor-arg>
+			<bean class="com.journaldev.spring.di.services.TwitterService" />
+		</constructor-arg>
+	</bean>
+-->
+	<bean id="twitter" class="PostInitializationClass" init-method="init">
+	<property name="message" value="twitterwewewewewewe poststststst"></property>
+	</bean>
+	<bean id="MyXMLApp" class="PreDestroyClass" destroy-method="destroy">
+		<property name="message" value="twitterwewewewewewe"></property>
+	</bean>
+	<bean id="aware" class="MyServiceClass"></bean>
+	
+	
+	
+	
+	<!-- Enable the AspectJ for Spring AOP
+	-->
+	<aop:aspectj-autoproxy/>
+	
+	<bean id="employee" class="Employe">
+		<property name="name" value="employee name is archana"></property>
+	</bean>
+	<bean id="employeeService" class="EmployeeService">
+	<property name="employee" ref="employee"></property>
+	</bean>
+	<bean id="employeeAspect" class="EmployeeAspect"> </bean>
+</beans>
